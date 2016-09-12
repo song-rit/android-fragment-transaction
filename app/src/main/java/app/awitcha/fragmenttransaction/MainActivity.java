@@ -13,6 +13,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class MainActivity extends AppCompatActivity {
+    private int level = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

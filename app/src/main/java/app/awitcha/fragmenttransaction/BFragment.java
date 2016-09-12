@@ -91,7 +91,7 @@ public class BFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 FragmentManager manager = getFragmentManager();
-                manager.popBackStack();
+                manager.popBackStack("A", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
     }

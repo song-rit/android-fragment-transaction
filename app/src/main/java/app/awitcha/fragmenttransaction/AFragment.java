@@ -80,7 +80,7 @@ public class AFragment extends Fragment {
                 FragmentTransaction transaction = manager.beginTransaction();
                 transaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_left, R.anim.slide_in_left, R.anim.slide_out_right);
                 transaction.replace(R.id.fragment_main, fragment);
-                transaction.addToBackStack(null);
+                transaction.addToBackStack("A");
                 transaction.commit();
             }
         });

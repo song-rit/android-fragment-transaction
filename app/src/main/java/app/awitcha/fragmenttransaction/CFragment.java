@@ -4,7 +4,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,7 +14,8 @@ import android.widget.Button;
  */
 public class CFragment extends Fragment {
 
-    private Button button;
+    private Button buttonBackToB;
+    private Button buttonBackToA;
 
     public static CFragment newInstance() {
         CFragment fragment = new CFragment();
@@ -23,7 +23,6 @@ public class CFragment extends Fragment {
         fragment.setArguments(args);
         return fragment;
     }
-
 
 
     @Override
@@ -35,12 +34,21 @@ public class CFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        button = (Button) view.findViewById(R.id.button_fragment_c);
-        button.setOnClickListener(new View.OnClickListener() {
+        buttonBackToB = (Button) view.findViewById(R.id.button_back_to_B_fragment_c);
+        buttonBackToB.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FragmentManager manager = getFragmentManager();
-                manager.popBackStack();
+                manager.popBackStack("B", FragmentManager.POP_BACK_STACK_INCLUSIVE);
+            }
+        });
+
+        buttonBackToA = (Button) view.findViewById(R.id.button_back_to_A_fragment_c);
+        buttonBackToA.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FragmentManager manager = getFragmentManager();
+                manager.popBackStack("A", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
     }
