@@ -1,11 +1,13 @@
 package app.awitcha.fragmenttransaction;
 
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -28,6 +30,8 @@ public class AFragment extends Fragment {
     private String mParam2;
 
     private Button buttonNext;
+
+    private static final String sTAG = AFragment.class.getSimpleName();
 
     public AFragment() {
         // Required empty public constructor
@@ -54,6 +58,8 @@ public class AFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.i("onCreate", sTAG);
+
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
@@ -64,12 +70,16 @@ public class AFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+        Log.i("onCreateView", sTAG);
         return inflater.inflate(R.layout.fragment_a, container, false);
     }
 
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        Log.i("onViewCreated", sTAG);
+
         buttonNext = (Button) view.findViewById(R.id.button_next);
 
         buttonNext.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +94,53 @@ public class AFragment extends Fragment {
                 transaction.commit();
             }
         });
+    }
 
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.i("onPause", sTAG);
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.i("onResume", sTAG);
+    }
+
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Log.i("onActivityCreated", sTAG);
+    }
+
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        Log.i("onAttach", sTAG);
+    }
+
+    public void onDestroy() {
+        super.onDestroy();
+        Log.i("onDestroy", sTAG);
+    }
+
+    public void onDestroyView() {
+        super.onDestroyView();
+        Log.i("onDestroyView", sTAG);
+    }
+
+    public void onDetach() {
+        super.onDetach();
+        Log.i("onDetach", sTAG);
+    }
+
+    public void onStart() {
+        super.onStart();
+        Log.i("onStart", sTAG);
+    }
+
+    public void onStop() {
+        super.onStop();
+        Log.i("onStop", sTAG);
     }
 }

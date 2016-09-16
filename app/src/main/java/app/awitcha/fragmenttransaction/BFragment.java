@@ -1,11 +1,13 @@
 package app.awitcha.fragmenttransaction;
 
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,6 +25,7 @@ public class BFragment extends Fragment {
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
+    private static final String sTAG = BFragment.class.getSimpleName();
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
@@ -64,6 +67,7 @@ public class BFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        Log.i("onCreateView", sTAG);
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_b, container, false);
     }
@@ -71,6 +75,7 @@ public class BFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        Log.i("onViewCreated", sTAG);
         buttonNext = (Button) view.findViewById(R.id.button_next);
         buttonBack = (Button) view.findViewById(R.id.button_back);
 
@@ -94,5 +99,53 @@ public class BFragment extends Fragment {
                 manager.popBackStack("A", FragmentManager.POP_BACK_STACK_INCLUSIVE);
             }
         });
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.i("onPause", sTAG);
+
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        Log.i("onResume", sTAG);
+    }
+
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        Log.i("onActivityCreated", sTAG);
+    }
+
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+        Log.i("onAttach", sTAG);
+    }
+
+    public void onDestroy() {
+        super.onDestroy();
+        Log.i("onDestroy", sTAG);
+    }
+
+    public void onDestroyView() {
+        super.onDestroyView();
+        Log.i("onDestroyView", sTAG);
+    }
+
+    public void onDetach() {
+        super.onDetach();
+        Log.i("onDetach", sTAG);
+    }
+
+    public void onStart() {
+        super.onStart();
+        Log.i("onStart", sTAG);
+    }
+
+    public void onStop() {
+        super.onStop();
+        Log.i("onStop", sTAG);
     }
 }
